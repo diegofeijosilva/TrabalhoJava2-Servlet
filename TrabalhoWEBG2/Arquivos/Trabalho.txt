@@ -1,0 +1,72 @@
+Descrição do Trabalho G2
+------------------------
+
+OK - 1. Crie um diagrama de classes ou ER para 2 tabelas ASSOCIADAS. Cada tabela deverá ter no mínimo 4 atributos, 
+	sendo obrigatório campos com DATE, BOOLEAN, CHAR, INTEGER e STRING.
+
+OK - 2. Crie as classes POJO para mapeamento das tabelas incluindo o mapeamento dos 4 atributos.
+
+OK - 3. Desenvolva uma única classe com um método público para fazer o drop de todas as tabelas e outro para 
+	criar toda a estrutura do banco de dados conforme definição dos POJOs (apenas CREATE, sem inserção de dados).
+
+OK -	4. Crie uma classe que popula o banco criado, lendo os dados de um arquivo CSV informado em um formulário JSP 
+	(um arquivo CSV por tabela) e persistindo utilizando obrigatoriamente os métodos das CLASSES DE CONTROLE. 
+	Cada arquivo CSV deve ser lido utilizando Threads (o usuário pode definir antes da execução a prioridade 
+	de cada thread). Deve-se fornecer no trabalho arquivos CSV com mais de 1000 registros para cada tabela, 
+	com 10% de registros inválidos. Ao final da importação, o sistema deve informar a quantidade de registros 
+	salvos no banco e a quantidade de registros inválidos (não salvos).
+
+OK - 5. Crie as classes DAO (Data Access Object), uma para cada POJO, com os métodos públicos:
+	a. Busca pela chave primária: Objeto buscaPorChave(long id)
+	b. Lista todos os registros: List lista()
+	c. Insere: insere(Objeto obj)
+	d. Exclui: exclui(Objeto obj) ? exclui objeto pelo identificador (Id deve ser informado, senão lança exceção)
+	e. Atualiza: atualiza(Objeto obj) ? atualiza todos os campos do objeto pelo identificador (Id deve ser informado, senão lança exceção)
+	f. Insere e Atualiza: insereOuAtualiza (Objeto obj) ? verifica se o objeto foi informado com Id, se for, realiza atualização, senão inserção. 
+
+OK - 6. Crie duas classes de Controle (uma para cada POJO) que realizam as operações CRUD - 
+	CREATE/RETRIEVE/UPDATE/DELETE. Cada operação (mínimo 4 - CRUD) deve ter suas devidas validações 
+	e referências (instâncias) aos respectivos DAOs necessários às suas operações. 
+	Por exemplo, durante a inserção, crie um método insere() no controle que deve validar os dados para 
+	depois inserir utilizando o DAO. Como exemplo de validação, podemos ter que um campo não pode ter 
+	mais que 10 caracteres, um tipo numérico deve pertencer ao intervado de 1 a 10, o e-mail ou cpf deve ser válido. 
+	Cada classe de controle deverá ter no mínimo 4 métodos públicos onde todos os atributos do POJO devem testados.
+
+OK - 7. Todos os métodos devem ter o tratamento de exceção adequado.
+
+OK - 8. Crie páginas JSP com formulários para inserção/edição/listagem/exclusão de dados no banco de dados conforme os campos 
+	definidos pelos POJOs. O formulário deve sempre imprimir os campos que não passaram pelas validações usando EL 
+	(lembrando que todos os campos devem ser validados). A exclusão será realizada redirecionando a requisicao para a 
+	classe de ServletControle. Você pode gerar um link em cada linha da tabela com "controle?acao=excluir&valor=". 	
+	O ServletControle deverá solicitar para a classse de controle do POJO remover o elemento e atualizar a lista utilizando 
+	request.setAttribute.Redirecionar para o JSP que lista os dados
+
+OK - 9. Todas as páginas JSP devem ter ao menos uma taglib JSLT. Todas as listagens devem utilizar TAGLIBs para os resultados, 
+	imprimindo fundo alternado para cada linha da tabela.
+
+OK - 10. Crie páginas JSP para (1) menu, (2) rodapé e (3) cabeçalho da aplicação (usando includes do JSP). 
+	O menu deve permitir fazer as operações CRUD em cada tabela, bem como disparar os processos de criação e 
+	população do banco de dados definidos pelos itens 3 e 4 (crie uma página para criar a infraestrutura das tabelas, 
+	bem como informar o arquivo CSVs para popular o banco e definir a prioridade das threads). 
+
+OK - 11. Um único Servlet que, dependendo do parâmetro da requisição do JSP, irá executar a operação definida pela classe de 
+	controle. Por exemplo, se receber o parâmetro ‘insereCliente’, o sistema sabe que irá invocar os métodos do ClienteController 
+	para inserir os dados do formulário e retornar no response os resultados da inserção, incluindo a página do menu.
+
+
+12. Controle de erros de URL e de exceções configuradas no web.xml.
+
+OK - 13. Os testes unitários e a suite de teste são obrigatórios para todos os métodos públicos de todas as classes. 
+	O trabalho será avaliado pela qualidade dos testes unitários entregues. 
+
+
+
+OBSERVAÇÃO IMPORTANTE:
+- Trabalhos INDIVIDUAIS e submetidos a ferramentas de análise de clone de código. Trabalhos com equivalência superior a 
+	30% terão nota ZERO para todos os envolvidos.
+- Trabalhos sem testes unitários não serão avaliados e receberão ZERO!
+- Trabalhos com o método MAIN receberão ZERO.
+- O trabalho será apresentado para o professor em sala de aula.
+
+Data de Entrega: 20/11 - 19hs pontualmente (não serão aceitos trabalhos atrasados). As apresentações serão 
+dia 20/11 e 4/12 com os trabalhos postados no Moodle.

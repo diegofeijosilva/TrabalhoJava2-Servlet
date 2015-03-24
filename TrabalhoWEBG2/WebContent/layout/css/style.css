@@ -1,0 +1,60 @@
+#principal {
+	position: fixed; 
+	top:0; 
+	left: 0;
+	width:100%;  
+	height: 100%;
+	margin:0 auto;
+	text-align:left;
+	
+	}
+	
+h1 {
+	margin: 0.8em 0;
+	color:#c30;
+	font-size:1.4em;
+	}
+
+#rodape { 	
+			position: fixed;
+			bottom: 0; 
+			width: 100%; 
+			height: 40px; 
+			background-color: #cce; 
+			text-align: center; 
+		}
+	
+#topo {
+	position: fixed;
+	width: 100%; 
+	background-color: #cce;
+	height:50px;
+	}
+	
+#menu {
+	position: fixed;
+	width:20%;
+	float:left;
+	height: 100%;
+	}
+	
+#conteudo{
+	position: relative;
+	left: 20%;
+    top:50px;
+	
+	height:100%;
+	
+	width: 80%;
+	
+	
+	
+	overflow: auto;
+	
+}
+
+#mensagemErro {
+	font-size : 10px;
+	color: red;
+	font-family: arial;
+}
